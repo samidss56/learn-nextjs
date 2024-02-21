@@ -1,4 +1,5 @@
 import { ProductType } from "@/types/product.type";
+import Link from "next/link";
 
 const ProductView = ({ products }: { products: ProductType[] }) => {
   return (
@@ -8,7 +9,11 @@ const ProductView = ({ products }: { products: ProductType[] }) => {
         {products.length > 0 ? (
           <>
             {products.map((product: ProductType) => (
-              <div key={product.id} className="w-1/4 p-2.5">
+              <Link
+                href={`/product/${product.id}`}
+                key={product.id}
+                className="w-1/4 p-2.5"
+              >
                 <div className="">
                   <img
                     src={product.image}
@@ -25,7 +30,7 @@ const ProductView = ({ products }: { products: ProductType[] }) => {
                     currency: "IDR",
                   })}
                 </p>
-              </div>
+              </Link>
             ))}
           </>
         ) : (
